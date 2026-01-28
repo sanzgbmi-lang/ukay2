@@ -3,120 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <title>Games Admin Dashboard</title>
-
-  <!-- Supabase JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #fff;
-      padding: 40px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    .box {
-      max-width: 420px;
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 15px;
-    }
-
-    input {
-      background: #0f172a;
-      color: white;
-      border: 1px solid #334155;
-    }
-
-    button {
-      background: #22c55e;
-      color: #022c22;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    #status {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
 </head>
 
 <body>
 
-  <h1>🎮 Games Admin Panel</h1>
+<h2>Supabase Test</h2>
+<button id="btn">Add Game</button>
+<p id="status"></p>
 
-  <div class="box">
-    <input id="title" placeholder="Game Title" />
-    <input id="category" placeholder="Category (RPG, Action...)" />
-    <input id="region" placeholder="Region (USA / EU / JP / Global)" />
-    <input id="size" placeholder="Size (e.g. 1.2 GB)" />
-    <input id="image" placeholder="Image URL" />
-    <input id="url" placeholder="Game URL" />
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-    <button onclick="addGame()">Add Game</button>
-
-    <div id="status"></div>
-  </div>
-
-<script>
-  // 🔥 YOUR SUPABASE INFO
   const supabaseUrl = "https://ozqyemgpjtvjnwdaemq.supabase.co";
-  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96cXllbWdwanR2aWpud2RhZW1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1ODY4ODYsImV4cCI6MjA4NTE2Mjg4Nn0.SQ_BpsgSQiTDGczS6oSXaDAXILTfghYvtGAm1fSKtCQ";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96cXllbWdwanR2aWpud2RhZW1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1ODY4ODYsImV4cCI6MjA4NTE2Mjg4Nn0.SQ_BpsgSQiTDGczS6oSXaDAXILTfghYvtGAm1fSKtCQ";
 
-  const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-  );
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
-  async function addGame() {
-    const status = document.getElementById("status");
-
-    const game = {
-      title: document.getElementById("title").value,
-      category: document.getElementById("category").value,
-      region: document.getElementById("region").value,
-      size: document.getElementById("size").value,
-      image: document.getElementById("image").value,
-      url: document.getElementById("url").value
-    };
-
+  document.getElementById("btn").onclick = async () => {
     const { error } = await supabase
       .from("games")
-      .insert([game]);
+      .insert({
+        title: "WORKING TEST",
+        category: "Action",
+        region: "USA",
+        size: "1GB",
+        image: "test",
+        url: "test"
+      });
 
-    if (error) {
-      status.style.color = "red";
-      status.innerText = "❌ Error: " + error.message;
-    } else {
-      status.style.color = "lightgreen";
-      status.innerText = "✅ Game added successfully!";
-
-      // clear fields
-      document.querySelectorAll("input").forEach(i => i.value = "");
-    }
-  }
+    document.getElementById("status").innerText =
+      error ? error.message : "✅ INSERTED SUCCESSFULLY";
+  };
 </script>
 
 </body>
 </html>
-
-
