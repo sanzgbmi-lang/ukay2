@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS UKAY2 - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Main content -->
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="brand">
+                <h2>JS UKAY2</h2>
+                <p class="subtitle">Login to your account</p>
+            </div>
+            
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder=" " required>
+                    <label>Username</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <span>Login</span>
+                </button>
+                
+                <div class="divider">or</div>
+                
+                <div class="google-btn-wrapper">
+                    <div id="g_id_onload" 
+                         data-client_id="944662325942-i2j5q2l2pom21nc3iog6aqq2g1elrjut.apps.googleusercontent.com" 
+                         data-callback="handleGoogleLogin">
+                    </div>
+                    <div class="g_id_signin" 
+                         data-type="standard" 
+                         data-size="large" 
+                         data-theme="filled_black" 
+                         data-shape="pill"
+                         data-width="320">
+                    </div>
+                </div>
+            </form>
+            
+            <p class="switch">
+                Don't have an account?
+                <a href="#">Create one</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function handleGoogleLogin(response) {
+            console.log("Google JWT:", response.credential);
+            alert("Google Login Successful!");
+        }
+    </script>
+</body>
+</html>
