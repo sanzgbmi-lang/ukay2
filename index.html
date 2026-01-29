@@ -13,29 +13,41 @@
 
 <script type="module">
   import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
+  
   const supabaseUrl = "https://ozqyemgpjtvjnwdaemq.supabase.co";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96cXllbWdwanR2aWpud2RhZW1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1ODY4ODYsImV4cCI6MjA4NTE2Mjg4Nn0.SQ_BpsgSQiTDGczS6oSXaDAXILTfghYvtGAm1fSKtCQ";
-
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96cXllbWdwanR2aWpud2RhZW1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1ODY4ODYsImV4cCI6MjA4NTE2Mjg4Nn0.SQ_BpsgSQiTDGczS6oSXaDAXILTfghYvtGAm1fSKtCQ";
+  
   const supabase = createClient(supabaseUrl, supabaseKey);
-
+  
   document.getElementById("btn").onclick = async () => {
-    const { error } = await supabase
-      .from("games")
-      .insert({
-        title: "WORKING TEST",
-        category: "Action",
-        region: "USA",
-        size: "1GB",
-        image: "test",
-        url: "test"
-      });
-
-    document.getElementById("status").innerText =
-      error ? error.message : "✅ INSERTED SUCCESSFULLY";
+    try {
+      document.getElementById("status").innerText = "Loading...";
+      
+      const { data, error } = await supabase
+        .from("games")
+        .insert({
+          title: "WORKING TEST",
+          category: "Action",
+          region: "USA",
+          size: "1GB",
+          image: "test",
+          url: "test"
+        });
+      
+      if (error) {
+        console.error("Supabase error:", error);
+        document.getElementById("status").innerText = `❌ Error: ${error.message}`;
+      } else {
+        console.log("Success:", data);
+        document.getElementById("status").innerText = "✅ INSERTED SUCCESSFULLY";
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      document.getElementById("status").innerText = `❌ Network Error: ${err.message}`;
+    }
   };
 </script>
 
 </body>
 </html>
+
