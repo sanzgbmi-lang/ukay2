@@ -25,10 +25,11 @@ async function loadProfile() {
 }
 
 async function logout() {
-  await supabase.auth.signOut();
+  await supabaseClient.auth.signOut();
   window.location.href = "index.html";
 }
 
 loadProfile();
+
 
 
