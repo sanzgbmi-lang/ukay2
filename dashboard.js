@@ -7,14 +7,14 @@ const supabaseClient = window.supabase.createClient(
 );
 
 async function loadProfile() {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
   if (!user) {
     window.location.href = "index.html";
     return;
   }
 
-  const { data } = await supabase
+  const { data } = await supabaseClient
     .from("profiles")
     .select("role")
     .eq("id", user.id)
@@ -30,4 +30,5 @@ async function logout() {
 }
 
 loadProfile();
+
 
