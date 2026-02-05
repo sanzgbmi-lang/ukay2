@@ -1,5 +1,3 @@
-const supabaseClient = window.supabaseClient;
-
 async function redirectIfLoggedIn() {
   const { data: { user } } = await supabaseClient.auth.getUser();
 
@@ -9,4 +7,5 @@ async function redirectIfLoggedIn() {
 }
 
 redirectIfLoggedIn();
+
 
