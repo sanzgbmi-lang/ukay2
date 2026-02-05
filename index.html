@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Login</h2>
-<input id="email" type="email" placeholder="Email" />
-<input id="password" type="password" placeholder="Password" />
-<button onclick="login()">Login</button>
+<div class="container">
+  <div class="card">
+    <h2>Welcome Back</h2>
 
-<h2>Sign Up</h2>
-<input id="signupEmail" type="email" placeholder="Email" />
-<input id="signupPassword" type="password" placeholder="Password" />
-<button onclick="signup()">Sign Up</button>
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
 
-<p id="msg"></p>
+    <hr>
+
+    <h3>Create Account</h3>
+    <input id="signupEmail" type="email" placeholder="Email" />
+    <input id="signupPassword" type="password" placeholder="Password" />
+    <button class="secondary" onclick="signup()">Sign Up</button>
+
+    <p id="msg" class="message"></p>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
