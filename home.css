@@ -1,46 +1,85 @@
 /* ===== Navbar overrides (fix global button styles) ===== */
+.top-nav {
+  width: 100%;
+}
 
-.top-nav button {
+.nav-inner {
+  display: flex;
+  justify-content: flex-end; /* Align everything to the right */
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.nav-tabs {
+  display: flex;
+  flex-direction: row; /* Linear horizontal layout */
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-item {
   width: auto;
   min-height: unset;
   padding: 10px 14px;
   background: none;
   color: var(--text-secondary);
   box-shadow: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.top-nav button:hover {
+.nav-item:hover {
+  background: none;
+  box-shadow: none;
+  transform: none;
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.profile-btn {
+  width: auto;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-btn:hover {
   background: none;
   box-shadow: none;
   transform: none;
 }
 
-.profile-btn {
-  width: auto;
-  padding: 0;
+.profile-avatar {
+  font-size: 24px;
 }
-/* ===== Features ===== */
 
+/* ===== Features ===== */
 .feature-list {
   margin-top: 16px;
   padding-left: 18px;
   color: var(--text-secondary);
   line-height: 1.6;
 }
-
 .feature-list li {
   margin-bottom: 8px;
 }
-
 /* ===== Shopping ===== */
-
 .items-grid {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
-
 .item-card {
   padding: 16px;
   border-radius: var(--radius-md);
@@ -52,34 +91,28 @@
   background: var(--bg-white);
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
-
 .item-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
-
 .item-title {
   font-weight: 600;
   color: var(--text-primary);
 }
-
 .item-price {
   font-size: 14px;
   color: var(--text-secondary);
 }
-
 /* Make Add to Cart buttons look right inside cards */
 .item-card button {
   width: 100%;
 }
-
 /* Responsive grid */
 @media (min-width: 640px) {
   .items-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (min-width: 1024px) {
   .items-grid {
     grid-template-columns: repeat(3, 1fr);
