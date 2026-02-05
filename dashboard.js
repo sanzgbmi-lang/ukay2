@@ -1,14 +1,12 @@
-const supabaseClient = window.supabaseClient;
-
 async function loadProfile() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
+  const { data: { user } } = await window.supabaseClient.auth.getUser();
 
   if (!user) {
     window.location.href = "index.html";
     return;
   }
 
-  const { data, error } = await supabaseClient
+  const { data, error } = await window.supabaseClient
     .from("profiles")
     .select("role")
     .eq("id", user.id)
@@ -26,9 +24,10 @@ async function loadProfile() {
 }
 
 async function logout() {
-  await supabaseClient.auth.signOut();
+  await window.supabaseClient.auth.signOut();
   window.location.href = "index.html";
 }
 
 loadProfile();
+
 
