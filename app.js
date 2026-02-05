@@ -37,25 +37,35 @@ async function signup() {
         error ? error.message : "Signup successful! You can log in.";
 }
 
-async function login(event) {
-  event.preventDefault(); // 🔥 THIS LINE FIXES IT
+async function login() {
 
-  setLoading("loginBtn", true);
+    setLoading("loginBtn", true);
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  const { error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
-  });
+    const { error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+    });
 
-  setLoading("loginBtn", false);
+    setLoading("loginBtn", true);
 
-  if (error) {
-    document.getElementById("msg").innerText = error.message;
-    return;
-  }
+    if (error) {
+        document.getElementById("msg").innerText = error.message;
+        return;
+    }
 
-  window.location.href = "home.html";
+    // Redirect after login
+    window.location.href = "home.html";
 }
+
+async function redirectIfLoggedIn() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    // Already logged in → go home
+    window.location.replace("home.html");
+  }
+}
+redirectIfLoggedIn();
