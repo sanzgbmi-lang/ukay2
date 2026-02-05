@@ -1,17 +1,32 @@
-const supabaseClient = window.supabaseClient;
-
-async function protectPage() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
+async function protectHome() {
+  const { data: { user } } =
+    await window.supabaseClient.auth.getUser();
 
   if (!user) {
-    // Not logged in → go to login page
-    window.location.href = "index.html";
+    window.location.replace("index.html");
     return;
   }
-
-  // Optional: user is logged in
-  console.log("Logged in as:", user.email);
 }
 
-protectPage();
+// Tabs logic
+const tabs = document.querySelectorAll(".nav-item");
+const sections = document.querySelectorAll(".tab-content");
 
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    const target = tab.dataset.tab;
+
+    tabs.forEach(t => t.classList.remove("active"));
+    sections.forEach(s => s.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(target).classList.add("active");
+  });
+});
+
+// Profile → Dashboard
+function goToDashboard() {
+  window.location.href = "dashboard.html";
+}
+
+protectHome();
