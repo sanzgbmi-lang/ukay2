@@ -1,7 +1,4 @@
-const supabaseClient = window.supabase.createClient(
-  window.SUPABASE_CONFIG.url,
-  window.SUPABASE_CONFIG.anonKey
-);
+const supabaseClient = window.supabaseClient;
 
 function setLoading(buttonId, isLoading) {
   const btn = document.getElementById(buttonId);
@@ -60,3 +57,4 @@ async function login(event) {
   // ✅ Redirect now WORKS
   window.location.replace("home.html");
 }
+
