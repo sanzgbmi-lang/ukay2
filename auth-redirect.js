@@ -1,5 +1,6 @@
 async function redirectIfLoggedIn() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
+  const { data: { user } } =
+    await window.supabaseClient.auth.getUser();
 
   if (user) {
     window.location.replace("home.html");
@@ -7,5 +8,3 @@ async function redirectIfLoggedIn() {
 }
 
 redirectIfLoggedIn();
-
-
