@@ -4,57 +4,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Browse items" />
+    <meta name="description" content="Home" />
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <header class="top-nav">
+        <nav class="nav-inner">
+            <div class="nav-tabs">
+                <button class="nav-item active" data-tab="features">
+                    Features
+                </button>
+                <button class="nav-item" data-tab="shopping">
+                    Shopping
+                </button>
+            </div>
+            <!-- Profile avatar -->
+            <button class="profile-btn" onclick="goToDashboard()" aria-label="Profile">
+                <span class="profile-avatar">👤</span>
+            </button>
+        </nav>
+    </header>
     <main class="container">
         <div class="card">
-            <!-- Header -->
-            <header class="page-header">
-                <h2>Items</h2>
-            </header>
-            <!-- Items -->
-            <section class="items-grid" id="itemsGrid">
-                <div class="item-card">
-                    <div class="item-title">Item name</div>
-                    <div class="item-description">
-                        Short description of the item goes here.
-                    </div>
-                </div>
+            <!-- FEATURES -->
+            <section id="features" class="tab-content active">
+                <h2>Features</h2>
+                <p class="section-text">
+                    Explore app features here.
+                </p>
             </section>
-            <!-- Items -->
-            <section class="items-grid" id="itemsGrid">
-                <div class="item-card">
-                    <div class="item-title">Item name</div>
-                    <div class="item-description">
-                        Short description of the item goes here.
-                    </div>
-                </div>
+            <!-- SHOPPING -->
+            <section id="shopping" class="tab-content">
+                <h2>Shopping</h2>
+                <p class="section-text">
+                    Browse and shop items here.
+                </p>
             </section>
-            <!-- Items -->
-            <section class="items-grid" id="itemsGrid">
-                <div class="item-card">
-                    <div class="item-title">Item name</div>
-                    <div class="item-description">
-                        Short description of the item goes here.
-                    </div>
-                </div>
-            </section>
-            <!-- Empty state -->
-            <p id="emptyState" class="empty-state">
-                No items yet.
-            </p>
         </div>
     </main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>
-
-
-
