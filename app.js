@@ -1,5 +1,3 @@
-const supabaseClient = window.supabaseClient;
-
 function setLoading(buttonId, isLoading) {
   const btn = document.getElementById(buttonId);
 
@@ -21,7 +19,7 @@ async function signup(event) {
   const email = document.getElementById("signupEmail").value;
   const password = document.getElementById("signupPassword").value;
 
-  const { error } = await supabaseClient.auth.signUp({
+  const { error } = await window.supabaseClient.auth.signUp({
     email,
     password
   });
@@ -35,14 +33,14 @@ async function signup(event) {
 }
 
 async function login(event) {
-  event.preventDefault(); // 🔥 REQUIRED
+  event.preventDefault();
 
   setLoading("loginBtn", true);
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { error } = await supabaseClient.auth.signInWithPassword({
+  const { error } = await window.supabaseClient.auth.signInWithPassword({
     email,
     password
   });
@@ -54,7 +52,5 @@ async function login(event) {
     return;
   }
 
-  // ✅ Redirect now WORKS
   window.location.replace("home.html");
 }
-
