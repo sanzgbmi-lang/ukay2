@@ -59,13 +59,3 @@ async function login() {
     // Redirect after login
     window.location.href = "home.html";
 }
-
-async function redirectIfLoggedIn() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
-
-  if (user) {
-    // Already logged in → go home
-    window.location.replace("home.html");
-  }
-}
-redirectIfLoggedIn();
