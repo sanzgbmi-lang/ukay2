@@ -63,6 +63,15 @@
   font-size: 24px;
 }
 
+/* ===== Tab System ===== */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
 /* ===== Features ===== */
 .feature-list {
   margin-top: 16px;
@@ -70,9 +79,11 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
 .feature-list li {
   margin-bottom: 8px;
 }
+
 /* ===== Shopping ===== */
 .items-grid {
   margin-top: 20px;
@@ -80,6 +91,7 @@
   grid-template-columns: 1fr;
   gap: 16px;
 }
+
 .item-card {
   padding: 16px;
   border-radius: var(--radius-md);
@@ -91,28 +103,34 @@
   background: var(--bg-white);
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
+
 .item-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
+
 .item-title {
   font-weight: 600;
   color: var(--text-primary);
 }
+
 .item-price {
   font-size: 14px;
   color: var(--text-secondary);
 }
+
 /* Make Add to Cart buttons look right inside cards */
 .item-card button {
   width: 100%;
 }
+
 /* Responsive grid */
 @media (min-width: 640px) {
   .items-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (min-width: 1024px) {
   .items-grid {
     grid-template-columns: repeat(3, 1fr);
