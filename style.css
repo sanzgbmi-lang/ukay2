@@ -6,7 +6,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  background: linear-gradient(135deg, #1e1b4b, #3b0764);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,10 +18,11 @@ body {
 }
 
 .card {
-  max-width: 380px;
+  width: 100%;
+  max-width: 420px;
   margin: auto;
   background: white;
-  padding: 30px;
+  padding: 28px;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -92,4 +93,5 @@ hr {
     border-radius: 16px;
   }
 }
+
 
