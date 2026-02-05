@@ -1,7 +1,4 @@
-const supabaseClient = window.supabase.createClient(
-  window.SUPABASE_CONFIG.url,
-  window.SUPABASE_CONFIG.anonKey
-);
+const supabaseClient = window.supabaseClient;
 
 async function loadProfile() {
   const { data: { user } } = await supabaseClient.auth.getUser();
@@ -34,3 +31,4 @@ async function logout() {
 }
 
 loadProfile();
+
