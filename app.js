@@ -37,25 +37,25 @@ async function signup() {
         error ? error.message : "Signup successful! You can log in.";
 }
 
-async function login() {
+async function login(event) {
+  event.preventDefault(); // 🔥 THIS LINE FIXES IT
 
-    setLoading("loginBtn", true);
+  setLoading("loginBtn", true);
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-    });
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
 
-    setLoading("loginBtn", true);
+  setLoading("loginBtn", false);
 
-    if (error) {
-        document.getElementById("msg").innerText = error.message;
-        return;
-    }
+  if (error) {
+    document.getElementById("msg").innerText = error.message;
+    return;
+  }
 
-    // Redirect after login
-    window.location.href = "home.html";
+  window.location.href = "home.html";
 }
