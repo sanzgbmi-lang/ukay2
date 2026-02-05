@@ -2,31 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Welcome - Login or create your account" />
+  <title>Welcome</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="container">
+    <div class="card">
+      <section class="login-section">
+        <h2>Welcome Back</h2>
+        <form id="loginForm" onsubmit="login(event)">
+          <div class="input-group">
+            <label for="email" class="sr-only">Email</label>
+            <input 
+              id="email" 
+              type="email" 
+              placeholder="Email" 
+              required 
+              autocomplete="email"
+              aria-label="Email address"
+            />
+          </div>
+          <div class="input-group">
+            <label for="password" class="sr-only">Password</label>
+            <input 
+              id="password" 
+              type="password" 
+              placeholder="Password" 
+              required 
+              autocomplete="current-password"
+              aria-label="Password"
+            />
+          </div>
+          <button id="loginBtn" type="submit">
+            <span class="btn-text">Login</span>
+            <span class="btn-loader" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
 
-<div class="container">
-  <div class="card">
-    <h2>Welcome Back</h2>
+      <div class="divider">
+        <span>or</span>
+      </div>
 
-    <input id="email" type="email" placeholder="Email" />
-    <input id="password" type="password" placeholder="Password" />
-    <button id="loginBtn" onclick="login()">Login</button>
+      <section class="signup-section">
+        <h3>Create Account</h3>
+        <form id="signupForm" onsubmit="signup(event)">
+          <div class="input-group">
+            <label for="signupEmail" class="sr-only">Email</label>
+            <input 
+              id="signupEmail" 
+              type="email" 
+              placeholder="Email" 
+              required 
+              autocomplete="email"
+              aria-label="Email address for signup"
+            />
+          </div>
+          <div class="input-group">
+            <label for="signupPassword" class="sr-only">Password</label>
+            <input 
+              id="signupPassword" 
+              type="password" 
+              placeholder="Password (min. 8 characters)" 
+              required 
+              minlength="8"
+              autocomplete="new-password"
+              aria-label="Password for signup"
+            />
+          </div>
+          <button id="signupBtn" class="secondary" type="submit">
+            <span class="btn-text">Sign Up</span>
+            <span class="btn-loader" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
 
-    <hr>
+      <div id="msg" class="message" role="alert" aria-live="polite"></div>
+    </div>
+  </main>
 
-    <h3>Create Account</h3>
-    <input id="signupEmail" type="email" placeholder="Email" />
-    <input id="signupPassword" type="password" placeholder="Password" />
-    <button id="signupBtn" class="secondary" onclick="signup()">Sign Up</button>
-
-    <p id="msg" class="message"></p>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
 </body>
 </html>
