@@ -2,40 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="User dashboard" />
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-  <div class="card dashboard-card">
+  <main class="container">
+    <div class="card dashboard-card">
 
-    <h2>Dashboard</h2>
+      <!-- Header -->
+      <header class="dashboard-header">
+        <h2>Dashboard</h2>
 
-    <div class="role-badge" id="roleBadge">
-      Loading role…
+        <div
+          id="roleBadge"
+          class="role-badge"
+          aria-live="polite"
+        >
+          Loading role…
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="dashboard-content">
+        <p class="welcome-text">
+          You are logged in successfully.
+        </p>
+      </section>
+
+      <!-- Actions -->
+      <section class="dashboard-actions">
+        <button
+          id="adminBtn"
+          class="secondary"
+          style="display: none"
+          aria-hidden="true"
+        >
+          Go to Admin Panel
+        </button>
+
+        <button
+          type="button"
+          onclick="logout()"
+          aria-label="Log out"
+        >
+          Logout
+        </button>
+      </section>
+
     </div>
+  </main>
 
-    <div class="dashboard-content">
-      <p class="welcome-text">
-        Welcome! You are successfully logged in.
-      </p>
-    </div>
-
-    <div class="dashboard-actions">
-      <button id="adminBtn" class="secondary" style="display:none">
-        Admin Panel
-      </button>
-
-      <button onclick="logout()">
-        Logout
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
