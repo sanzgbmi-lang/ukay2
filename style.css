@@ -367,3 +367,40 @@ input:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
 }
+/* ===== Dashboard styles ===== */
+
+.dashboard-card {
+  text-align: center;
+}
+
+.role-badge {
+  display: inline-block;
+  margin: 12px auto 24px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+}
+
+.role-badge.admin {
+  background: rgba(5, 150, 105, 0.15);
+  color: var(--success);
+}
+
+.welcome-text {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
