@@ -1,30 +1,71 @@
-async function protectHome() {
-  const { data: { user } } =
-    await window.supabaseClient.auth.getUser();
+<!DOCTYPE html>
+<html lang="en">
 
-  if (!user) {
-    window.location.replace("index.html");
-    return;
-  }
-}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Home" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+</head>
 
-const tabs = document.querySelectorAll(".nav-item");
-const sections = document.querySelectorAll(".tab-content");
+<body class="home">
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    const target = tab.dataset.tab;
+<header class="top-nav">
+  <nav class="nav-inner">
+    <div class="nav-tabs">
+      <button class="nav-item active" data-tab="features">Features</button>
+      <button class="nav-item" data-tab="shopping">Shopping</button>
+    </div>
 
-    tabs.forEach(t => t.classList.remove("active"));
-    sections.forEach(s => s.classList.remove("active"));
+    <button class="profile-btn" onclick="goToDashboard()" aria-label="Profile">
+      <span class="profile-avatar">👤</span>
+    </button>
+  </nav>
+</header>
 
-    tab.classList.add("active");
-    document.getElementById(target).classList.add("active");
-  });
-});
+<main class="container">
+  <div class="card">
 
-function goToDashboard() {
-  window.location.href = "dashboard.html";
-}
+    <!-- FEATURES TAB -->
+    <section id="features" class="tab-content active">
+      <h2>Features</h2>
 
-protectHome();
+      <ul class="feature-list">
+        <li>✔ Secure login & roles</li>
+        <li>✔ Responsive design</li>
+        <li>✔ Supabase backend</li>
+        <li>✔ Admin & user separation</li>
+      </ul>
+    </section>
+
+    <!-- SHOPPING TAB -->
+    <section id="shopping" class="tab-content">
+      <h2>Shopping</h2>
+
+      <div class="items-grid">
+        <!-- Item card -->
+        <div class="item-card">
+          <div class="item-title">Product One</div>
+          <div class="item-price">$10</div>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title">Product Two</div>
+          <div class="item-price">$15</div>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="home.js"></script>
+</body>
+
+</html>
