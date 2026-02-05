@@ -23,12 +23,7 @@ async function loadDashboard() {
         return;
     }
 
-    // 4. Update role badge
-    const badge = document.getElementById("roleBadge");
-    badge.innerText = data.role;
-    badge.classList.add(data.role);
-
-    // 5. Show admin button if admin
+    // 4. Show admin button if admin
     if (data.role === "admin") {
         const adminBtn = document.getElementById("adminBtn");
         adminBtn.style.display = "block";
