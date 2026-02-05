@@ -6,7 +6,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #1e1b4b, #3b0764);
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@ body {
   margin: auto;
   background: white;
   padding: 30px;
-  border-radius: 14px;
+  border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -61,6 +61,11 @@ button:hover {
   background: #4338ca;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 button.secondary {
   background: #6b7280;
 }
@@ -81,4 +86,3 @@ hr {
   font-size: 14px;
   color: #dc2626;
 }
-
