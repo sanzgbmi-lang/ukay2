@@ -1,63 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="User dashboard" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="User dashboard" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-  <main class="container">
-    <div class="card dashboard-card">
-
-      <!-- Header -->
-      <header class="dashboard-header">
-        <h2>Dashboard</h2>
-
-        <div
-          id="roleBadge"
-          class="role-badge"
-          aria-live="polite"
-        >
-          Loading role…
+    <main class="container">
+        <div class="card dashboard-card">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h2>Dashboard</h2>
+                <div id="roleBadge" class="role-badge" aria-live="polite">
+                    Loading role…
+                </div>
+            </header>
+            <!-- Content -->
+            <section class="dashboard-content">
+                <p class="welcome-text">
+                    You are logged in successfully.
+                </p>
+            </section>
+            <section class="dashboard-content">
+                <p class="welcome-text">
+                    You are logged in as
+                    <strong id="userEmail">loading…</strong>
+                </p>
+            </section>
+            <!-- Actions -->
+            <section class="dashboard-actions">
+                <button id="adminBtn" class="secondary" style="display: none" aria-hidden="true">
+                    Go to Admin Panel
+                </button>
+                <button type="button" onclick="logout()" aria-label="Log out">
+                    Logout
+                </button>
+            </section>
         </div>
-      </header>
-
-      <!-- Content -->
-      <section class="dashboard-content">
-        <p class="welcome-text">
-          You are logged in successfully.
-        </p>
-      </section>
-
-      <!-- Actions -->
-      <section class="dashboard-actions">
-        <button
-          id="adminBtn"
-          class="secondary"
-          style="display: none"
-          aria-hidden="true"
-        >
-          Go to Admin Panel
-        </button>
-
-        <button
-          type="button"
-          onclick="logout()"
-          aria-label="Log out"
-        >
-          Logout
-        </button>
-      </section>
-
-    </div>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
-  <script src="dashboard.js"></script>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="dashboard.js"></script>
 </body>
-</html>
 
+</html>
