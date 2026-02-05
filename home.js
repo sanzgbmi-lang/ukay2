@@ -8,7 +8,6 @@ async function protectHome() {
   }
 }
 
-// Tabs logic
 const tabs = document.querySelectorAll(".nav-item");
 const sections = document.querySelectorAll(".tab-content");
 
@@ -24,7 +23,6 @@ tabs.forEach(tab => {
   });
 });
 
-// Profile → Dashboard
 function goToDashboard() {
   window.location.href = "dashboard.html";
 }
