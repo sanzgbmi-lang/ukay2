@@ -1,33 +1,44 @@
-async function loadProfile() {
-  const { data: { user } } = await window.supabaseClient.auth.getUser();
+async function loadDashboard() {
+    // 1. Get logged-in user
+    const { data: { user } } =
+    await window.supabaseClient.auth.getUser();
 
-  if (!user) {
-    window.location.href = "index.html";
-    return;
-  }
+    if (!user) {
+        window.location.replace("index.html");
+        return;
+    }
 
-  const { data, error } = await window.supabaseClient
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
+    // 2. Show email
+    document.getElementById("userEmail").innerText = user.email;
 
-  if (error) return;
+    // 3. Get role from profiles table
+    const { data, error } = await window.supabaseClient
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .single();
 
-  const badge = document.getElementById("roleBadge");
-  badge.innerText = data.role;
-  badge.classList.add(data.role);
+    if (error) {
+        console.error(error);
+        return;
+    }
 
-  if (data.role === "admin") {
-    document.getElementById("adminBtn").style.display = "block";
-  }
+    // 4. Update role badge
+    const badge = document.getElementById("roleBadge");
+    badge.innerText = data.role;
+    badge.classList.add(data.role);
+
+    // 5. Show admin button if admin
+    if (data.role === "admin") {
+        const adminBtn = document.getElementById("adminBtn");
+        adminBtn.style.display = "block";
+        adminBtn.removeAttribute("aria-hidden");
+    }
 }
 
 async function logout() {
-  await window.supabaseClient.auth.signOut();
-  window.location.href = "index.html";
+    await window.supabaseClient.auth.signOut();
+    window.location.replace("index.html");
 }
 
-loadProfile();
-
-
+loadDashboard();
