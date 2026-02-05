@@ -1,4 +1,26 @@
+/* ===== Navbar overrides (fix global button styles) ===== */
+
+.top-nav button {
+  width: auto;
+  min-height: unset;
+  padding: 10px 14px;
+  background: none;
+  color: var(--text-secondary);
+  box-shadow: none;
+}
+
+.top-nav button:hover {
+  background: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.profile-btn {
+  width: auto;
+  padding: 0;
+}
 /* ===== Features ===== */
+
 .feature-list {
   margin-top: 16px;
   padding-left: 18px;
@@ -11,6 +33,7 @@
 }
 
 /* ===== Shopping ===== */
+
 .items-grid {
   margin-top: 20px;
   display: grid;
@@ -26,6 +49,13 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background: var(--bg-white);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.item-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .item-title {
@@ -36,6 +66,11 @@
 .item-price {
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* Make Add to Cart buttons look right inside cards */
+.item-card button {
+  width: 100%;
 }
 
 /* Responsive grid */
